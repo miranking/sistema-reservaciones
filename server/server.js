@@ -86,12 +86,12 @@ app.get('/api/reservations', (req, res) => {
   res.json(reservations);
 });
 
-// Importante: Siempre redirigir a la interfaz de usuario
+// Rutas para la aplicación frontend - IMPORTANTE
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-// Ruta comodín para cualquier otra solicitud
+// Ruta comodín para cualquier otra solicitud - IMPORTANTE
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
