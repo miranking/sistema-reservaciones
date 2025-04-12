@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Datos de ejemplo para las mesas
 const tables = [];
@@ -85,52 +86,14 @@ app.get('/api/reservations', (req, res) => {
   res.json(reservations);
 });
 
-// Página de inicio
+// Importante: Siempre redirigir a la interfaz de usuario
 app.get('/', (req, res) => {
-  res.send(`
-    <html>
-      <head>
-        <title>Sistema de Reservaciones</title>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-          }
-          h1 {
-            color: #4a6da7;
-          }
-          p {
-            margin-bottom: 20px;
-          }
-          .api-routes {
-            text-align: left;
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 5px;
-          }
-          .api-route {
-            margin-bottom: 10px;
-            font-family: monospace;
-          }
-        </style>
-      </head>
-      <body>
-        <h1>Sistema de Reservaciones</h1>
-        <p>API REST para sistema de reservaciones de restaurante</p>
-        
-        <div class="api-routes">
-          <h2>Rutas API disponibles:</h2>
-          <div class="api-route">GET /api/tables - Obtener todas las mesas</div>
-          <div class="api-route">GET /api/availability?date=YYYY-MM-DD&time=HH:MM - Verificar disponibilidad</div>
-          <div class="api-route">POST /api/reservations - Crear nueva reserva</div>
-          <div class="api-route">GET /api/reservations - Obtener todas las reservas</div>
-        </div>
-      </body>
-    </html>
-  `);
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
+// Ruta comodín para cualquier otra solicitud
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.listen(PORT, () => {
