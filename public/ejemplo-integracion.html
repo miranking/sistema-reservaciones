@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo de Integración - Sistema de Reservaciones</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #0d925f;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+    }
+    .integration-container {
+      margin-top: 30px;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Integración del Sistema de Reservaciones</h1>
+    
+    <h2>Opción 1: Integración con JavaScript (Recomendada)</h2>
+    <p>Agrega este código HTML donde quieras mostrar el sistema de reservaciones:</p>
+    <pre><code>&lt;div id="sistema-reservaciones-container"&gt;&lt;/div&gt;
+
+&lt;script src="https://sistema-reservaciones.onrender.com/embed.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function() {
+    iniciarSistemaReservaciones('sistema-reservaciones-container', {
+      restaurantName: "CHIPOTLE MEXICAN GRILL",
+      primaryColor: "#0d925f",
+      buffetColor: "#fd9b17",
+      height: "800px"
+    });
+  });
+&lt;/script&gt;</code></pre>
+    
+    <h3>Opciones de Personalización</h3>
+    <p>Puedes personalizar el sistema con estas opciones:</p>
+    <ul>
+      <li><strong>restaurantName</strong>: Nombre del restaurante</li>
+      <li><strong>primaryColor</strong>: Color principal para botones (por defecto "#0d925f")</li>
+      <li><strong>buffetColor</strong>: Color para opciones de buffet (por defecto "#fd9b17")</li>
+      <li><strong>showBuffet</strong>: Mostrar opción de buffet dominical (por defecto true)</li>
+      <li><strong>width</strong>: Ancho del sistema (por defecto "100%")</li>
+      <li><strong>height</strong>: Alto del sistema (por defecto "800px")</li>
+    </ul>
+    
+    <h2>Opción 2: Usando iframe</h2>
+    <p>Si prefieres usar un iframe directamente:</p>
+    <pre><code>&lt;iframe 
+  src="https://sistema-reservaciones.onrender.com?embedded=true&restaurantName=CHIPOTLE%20MEXICAN%20GRILL" 
+  style="width: 100%; height: 800px; border: none; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
+&gt;&lt;/iframe&gt;</code></pre>
+  </div>
+  
+  <div class="container integration-container">
+    <h2>Ejemplo en vivo</h2>
+    <div id="sistema-reservaciones-container"></div>
+  </div>
+  
+  <script src="embed.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof iniciarSistemaReservaciones === 'function') {
+        iniciarSistemaReservaciones('sistema-reservaciones-container', {
+          restaurantName: "Ejemplo Restaurante",
+          height: "700px"
+        });
+      }
+    });
+  </script>
+</body>
+</html>
