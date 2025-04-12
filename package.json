@@ -1,0 +1,19 @@
+{
+  "name": "sistema-reservaciones",
+  "version": "1.0.0",
+  "description": "Sistema de reservaciones para restaurante",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "cd client && npm install && npm run build",
+    "postinstall": "if [ -d \"client\" ]; then cd client && npm install; fi"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemailer": "^6.7.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
